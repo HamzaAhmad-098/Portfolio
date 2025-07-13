@@ -110,7 +110,7 @@ const projectData = {
     usage: "1. Open project files in Python or Processing IDE.\n2. Run the appropriate script.\n3. Play and enjoy!",
     screenshots: [],
     video: "Sneeze.mp4",
-    zip: "https://1drv.ms/u/c/f5913ab9f1d9a5b5/EQ3cE5m1WTBIhiDrbatcdg4BzXC2lTKbJUSJD_9FftNnOg?e=o5qmTQ"
+    zip: "https://1drv.ms/u/c/f5913ab9f1d9a5b5/EZPOSrfX9A5Chsp661O7G78BOZU6E3YtZCWdPLaMSpXlNA?e=olP1Qf"
   },
   "bike-factory-app": {
     title: "Bike Factory App",
