@@ -182,69 +182,65 @@ h2 {
   z-index: 1001;
 }
 
+/* Improved skills section for mobile */
 @media (max-width: 768px) {
-  .menu-toggle {
-    display: block;
+  .skills-bars {
+    gap: 1.8rem;
   }
   
-  .nav-links {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    height: 100vh;
-    width: 70%;
+  .skill-bar {
     flex-direction: column;
-    background: var(--bg-dark);
-    padding: 6rem 2rem 2rem;
-    transition: right 0.4s ease;
-    z-index: 1000;
-    box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+    align-items: flex-start;
+    gap: 0.6rem;
   }
   
-  .nav-links.active {
-    right: 0;
+  .skill-label {
+    flex: none;
+    width: 100%;
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
   }
   
-  .nav-links li {
-    margin: 1.5rem 0;
-    text-align: center;
+  .bar-bg {
+    width: 100%;
+    margin-right: 0;
+    height: 16px;
   }
   
-  .logo {
-    font-size: 1.5rem;
+  .skill-percent {
+    flex: none;
+    width: 100%;
+    text-align: left;
+    font-size: 0.95rem;
+    color: var(--accent-light);
+    margin-top: 0.3rem;
   }
   
-  .typewriter {
-    font-size: 1.6rem;
-    white-space: normal;
-    border-right: none;
-    animation: none;
+  /* Add skill level indicators */
+  .skill-bar::after {
+    content: attr(data-level);
     display: block;
+    font-size: 0.85rem;
+    color: var(--accent-light);
+    font-family: 'Fira Mono', monospace;
+    margin-top: 0.2rem;
   }
   
-  .hero-text p {
+  .skill-percent {
+    display: none; /* Hide the old percentage text */
+  }
+}
+
+/* Tablet adjustments */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .skill-label {
+    flex: 0 0 120px;
     font-size: 1rem;
   }
   
-  .section {
-    padding: 3rem 1.5rem;
-  }
-  
-  .project-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .experience-item, .research-item {
-    padding: 1.2rem;
-  }
-  
-  .contact-bar {
-    gap: 1.2rem;
-  }
-  
-  .contact-icon {
-    width: 44px;
-    height: 44px;
+  .skill-percent {
+    flex: 0 0 70px;
+    font-size: 0.95rem;
   }
 }
 @media (max-width: 480px) {
@@ -739,3 +735,4 @@ footer {
     position: relative;
   }
 }
+
