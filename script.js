@@ -1,4 +1,19 @@
 // Smooth scroll for in-page links
+document.addEventListener('DOMContentLoaded', () => {
+  // Mobile menu toggle
+  const mobileMenuBtn = document.getElementById('mobile-menu');
+  const navLinks = document.querySelector('.nav-links');
+  
+  mobileMenuBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+  });
+    document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  });
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener('click', e => {
     e.preventDefault();
@@ -8,41 +23,40 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
   });
 });
 
-// Fade-in animations on scroll
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.2 });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.2 });
 
-document.querySelectorAll('.fade-in').forEach(section => {
-  observer.observe(section);
-});
+  document.querySelectorAll('.fade-in').forEach(section => {
+    observer.observe(section);
+  });
 
 // Animated skill bars on scroll
-const skillBarObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      document.querySelectorAll('.bar-fill').forEach(bar => {
-        if (!bar.classList.contains('animated')) {
-          const targetWidth = bar.getAttribute('data-width');
-          if (targetWidth) {
-            bar.style.width = targetWidth + "%";
-            bar.classList.add('animated');
+  const skillBarObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        document.querySelectorAll('.bar-fill').forEach(bar => {
+          if (!bar.classList.contains('animated')) {
+            const targetWidth = bar.getAttribute('data-width');
+            if (targetWidth) {
+              bar.style.width = targetWidth + "%";
+              bar.classList.add('animated');
+            }
           }
-        }
-      });
-      skillBarObserver.disconnect();
-    }
-  });
-}, { threshold: 0.3 });
+        });
+        skillBarObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
 
-const skillsSection = document.querySelector('#experience .skills-bars');
-if (skillsSection) {
-  skillBarObserver.observe(skillsSection);
-}
+  const skillsSection = document.querySelector('#experience .skills-bars');
+  if (skillsSection) {
+    skillBarObserver.observe(skillsSection);
+  }
 const projectData = {
   "voice-robot": {
     title: "Voice Controlled Robot",
@@ -69,7 +83,7 @@ const projectData = {
     description: "Purchase online tickets for Lahore's Orange Train. Built in C# with a user-friendly interface for quick bookings.",
     usage: "1. Download and extract ZIP.\n2. Open solution in Visual Studio.\n3. Build and run the application.",
     screenshots: [],
-    video: "Train.mp4",
+    video: "train.mp4",
     zip: "https://1drv.ms/u/c/f5913ab9f1d9a5b5/EWWQnlR2UpZMnM0OCnnsgRAB-LVoT-FsgpyybM3nZDm25w?e=gN4fH9"
   },
   "number-system-encryptor": {
@@ -77,7 +91,7 @@ const projectData = {
     description: "Convert between number systems, encrypt/decrypt commands using custom keys or bitwise operations. All-in-one C# console app.",
     usage: "1. Compile the project.\n2. Run the executable in terminal.\n3. Follow menu instructions.",
     screenshots: [],
-    video: "Base.mp4",
+    video: "base.mp4",
     zip: "https://1drv.ms/u/c/f5913ab9f1d9a5b5/ERAtUezw2FNJlHuhEw5ioa4BAZJ36pN87ZuWW8qH3EcCNw?e=xhTQiS"
   },
   "path-finders-duel": {
@@ -85,7 +99,7 @@ const projectData = {
     description: "ASCII-based 2-player pathfinding duel. Use arrow keys to compete and find the best path!",
     usage: "1. Compile using a C++ compiler.\n2. Run the executable.\n3. Enjoy two-player gameplay.",
     screenshots: [],
-    video: "Path.mp4",
+    video: "path.mp4",
     zip: "https://1drv.ms/u/c/f5913ab9f1d9a5b5/EdiXIav-PElKm_A8z6K8sG8BqhqgaDhRXPIi39yB5M_OiQ?e=SEO9Wt"
   },
   "tic-tac-toe-cpp": {
@@ -93,7 +107,7 @@ const projectData = {
     description: "Classic tic-tac-toe game for the console, made with C++ and ASCII graphics.",
     usage: "1. Compile using a C++ compiler.\n2. Run the executable.\n3. Play the game.",
     screenshots: [],
-    video: "Tic.mp4",
+    video: "tic.mp4",
     zip: "https://1drv.ms/u/c/f5913ab9f1d9a5b5/EWuyNMIzGIRMv2OvDxOe2yQBbDfOxxSoREw0ipUKAp0qUw?e=hzBDZV"
   },
   "math-solver-kit": {
@@ -101,7 +115,7 @@ const projectData = {
     description: "A comprehensive Windows Forms application in C# for solving math problems, equations, and more. User-friendly UI for students and professionals.",
     usage: "1. Download and extract ZIP.\n2. Open solution in Visual Studio.\n3. Build and run the application.",
     screenshots: [],
-    video: "Kit.mp4",
+    video: "kit.mp4",
     zip: "https://1drv.ms/u/c/f5913ab9f1d9a5b5/ERSTcI_fJg9CsRMtWKQChaMBuba6JMnwaAVEZqf3tMYQEA?e=pPOh5p"
   },
   "sneezegame": {
@@ -109,15 +123,15 @@ const projectData = {
     description: "A fun game implemented in both Python and Processing IDE. Dodge and sneeze through obstacles to score high!",
     usage: "1. Open project files in Python or Processing IDE.\n2. Run the appropriate script.\n3. Play and enjoy!",
     screenshots: [],
-    video: "Sneeze.mp4",
-    zip: "https://1drv.ms/u/c/f5913ab9f1d9a5b5/EZPOSrfX9A5Chsp661O7G78BOZU6E3YtZCWdPLaMSpXlNA?e=vjrJMW"
+    video: "sneeze.mp4",
+    zip: "https://1drv.ms/u/c/f5913ab9f1d9a5b5/EQ3cE5m1WTBIhiDrbatcdg4BzXC2lTKbJUSJD_9FftNnOg?e=o5qmTQ"
   },
   "bike-factory-app": {
     title: "Bike Factory App",
     description: "A management system for a bike manufacturing factory. Includes inventory, orders, and staff modules. Developed with C# and SQL.",
     usage: "1. Download and extract ZIP.\n2. Open solution in Visual Studio.\n3. Build and run the application.",
     screenshots: [],
-    video: "Bike.mp4",
+    video: "bike.mp4",
     zip: "https://1drv.ms/u/c/f5913ab9f1d9a5b5/ET2_NgQRaPBMrVpAwQiqrGUBNjXBNK3KEq6aOCpSnuI06Q?e=gQZZw4"
   }
 };
@@ -171,3 +185,9 @@ if (feedbackForm) {
     });
   });
 }
+const mobileMenuBtn = document.getElementById('mobile-menu');
+const navLinks = document.querySelector('.nav-links');
+
+mobileMenuBtn.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+});
