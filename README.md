@@ -13,8 +13,11 @@ This portfolio is a collection of my frontend development projects built using *
 🌐 Skilled in building interactive, responsive websites using web technologies.  
 
 ---
-## Impressive Note !
-**This site is hosted on my home made server with custom domain**
+## 💡 Fun Fact
+🏠 I hosted the Portfolio Website from my own home-made Ubuntu server, using Cloudflare Tunnel and custom DNS — a fully self-reliant deployment stack without using cloud providers!
+> 🚨 **Live Demo Hosted on My Own Server!**  
+> Visit: [portfolio.hamzaxdevelopers.dpdns.org](http://portfolio.hamzaxdevelopers.dpdns.org)  
+> _Running on a custom Linux server using dynamic DNS and a custom domain setup._
 
 ## 📂 What This Repository Contains
 
