@@ -60,3 +60,6 @@ Hamza Ahmad
 
 🌐 Portfolio: [https://portfolio.hamzaxdevelopers.dpdns.org](https://portfolio.hamzaxdevelopers.dpdns.org) 
 
+⚖️ License
+This repository is for educational and portfolio purposes only.
+Please do not copy code directly for academic submissions.
