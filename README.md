@@ -59,9 +59,9 @@ I'm open to internships, freelance projects, or tech collaboration.
 Hamza Ahmad
 🔗 GitHub: HamzaAhmad-098
 
-📧 Email: jhaji1223@gmail.com
+- 📧 Email: [HamzaxDevelopers](mailto:hamzaxdevelopers1223@gmail.com)
 
-🌐 Portfolio: [https://portfolio.hamzaxdevelopers.dpdns.org](https://portfolio.hamzaxdevelopers.dpdns.org) 
+- 🌐 Portfolio: [https://portfolio.hamzaxdevelopers.dpdns.org](https://portfolio.hamzaxdevelopers.dpdns.org) 
 
 ⚖️ License
 This repository is for educational and portfolio purposes only.
