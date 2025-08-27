@@ -1,24 +1,16 @@
-// Smooth scroll for in-page links
 document.addEventListener('DOMContentLoaded', () => {
-  // Mobile menu toggle
   const mobileMenuBtn = document.getElementById('mobile-menu');
   const navLinks = document.querySelector('.nav-links');
-  
-  // Toggle mobile menu
   mobileMenuBtn.addEventListener('click', () => {
     navLinks.classList.toggle('active');
     document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
   });
-  
-  // Close mobile menu when clicking links
   document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
       navLinks.classList.remove('active');
       document.body.style.overflow = '';
     });
   });
-  
-  // Smooth scroll for anchor links
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
@@ -30,8 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
-
-  // Fade-in animations on scroll
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -43,8 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.fade-in').forEach(section => {
     observer.observe(section);
   });
-
-  // Animated skill bars on scroll
   const skillBarObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -65,8 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (skillsSection) {
     skillBarObserver.observe(skillsSection);
   }
-
-  // Project modal functionality
   const projectData = {
     "voice-robot": {
       title: "Voice Controlled Robot",
@@ -82,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
       title: "Finance Tracker App",
       description: "Windows Forms app using C# and MySQL to manage event finances.",
       usage: "1. Install dependencies.\n2. Set up MySQL database using provided script.\n3. Run the app and connect to the DB.",
-      zip: "https://1drv.ms/u/c/f5913ab9f1d9a5b5/EReSjwG-JUFGupzPIKcMmc0BdU3I_86tRSnV_vWE-oXBpg?e=gdVJ30"
+      zip: "https://download-directory.github.io/?url=https://github.com/HamzaAhmad-098/EventSphere"
     },
     "orange-train-app": {
       title: "Orange Train Application",
@@ -124,13 +110,29 @@ document.addEventListener('DOMContentLoaded', () => {
       video: "kit.mp4",
       zip: "https://1drv.ms/u/c/f5913ab9f1d9a5b5/ERSTcI_fJg9CsRMtWKQChaMBuba6JMnwaAVEZqf3tMYQEA?e=pPOh5p"
     },
+    "TeacherHelper": {
+      title: "TeacherHelperApp",
+      description: "Developed a Teacher Helper application in Ruby on Rails that uses an API key to automatically evaluate student tests and papers",
+      usage: "1. Extract Dowmloaded folder \n2.Follow the same dependencies step as explained in the git repo\n3. Use and feel Ease!",
+      screenshots: [],
+      video: "",
+      zip: "https://download-directory.github.io/?url=https://github.com/HamzaAhmad-098/RubyOnRails/tree/main/teacherHelper"
+    },
+    "DevBoard": {
+      title: "DevBoard",
+      description: "Developed a Rails project management system allowing ticket creation, status updates, verification, and complete role-based access control.",
+      usage: "1. Extract Dowmloaded folder \n2.Follow the same dependencies step as explained in the git repo\n3. Use and feel Ease!",
+      screenshots: [],
+      video: "",
+      zip: "https://download-directory.github.io/?url=https://github.com/HamzaAhmad-098/DevBoard"
+    },
     "sneezegame": {
       title: "SneezeGame",
       description: "A fun game implemented in both Python and Processing IDE. Dodge and sneeze through obstacles to score high!",
       usage: "1. Open project files in Python or Processing IDE.\n2. Run the appropriate script.\n3. Play and enjoy!",
       screenshots: [],
       video: "sneeze.mp4",
-      zip: "https://1drv.ms/u/c/f5913ab9f1d9a5b5/EQ3cE5m1WTBIhiDrbatcdg4BzXC2lTKbJUSJD_9FftNnOg?e=o5qmTQ"
+      zip: "https://download-directory.github.io/?url=https://github.com/HamzaAhmad-098/SneezeGame/tree/main/SneezeGamePython"
     },
     "bike-factory-app": {
       title: "Bike Factory App",
@@ -141,14 +143,11 @@ document.addEventListener('DOMContentLoaded', () => {
       zip: "https://1drv.ms/u/c/f5913ab9f1d9a5b5/ET2_NgQRaPBMrVpAwQiqrGUBNjXBNK3KEq6aOCpSnuI06Q?e=gQZZw4"
     }
   };
-  
-  // Project details modal
   document.querySelectorAll('.project-details-btn').forEach(btn => {
     btn.addEventListener('click', function() {
       const projectKey = this.getAttribute('data-project');
       const data = projectData[projectKey];
       if (!data) return;
-      
       let html = `<h2>${data.title}</h2>
         <p>${data.description}</p>
         <h4>Usage Instructions</h4>
@@ -156,33 +155,26 @@ document.addEventListener('DOMContentLoaded', () => {
         ${data.screenshots && data.screenshots.length ? '<h4>Screenshots</h4>' + data.screenshots.map(img => `<img src="${img}" alt="screenshot">`).join('') : ''}
         ${data.video ? `<h4>Workflow Video</h4><video class="project-video" controls src="${data.video}"></video>` : ''}
         ${data.zip ? `<a href="${data.zip}" class="modal-download" download>Download ZIP</a>` : ''}`;
-      
       document.getElementById('modal-body').innerHTML = html;
       document.getElementById('project-modal').style.display = "block";
       document.body.style.overflow = "hidden";
     });
   });
-  
-  // Modal close functionality
   document.querySelector('.close-modal').addEventListener('click', function() {
     document.getElementById('project-modal').style.display = "none";
     document.body.style.overflow = "";
   });
-  
   window.addEventListener('click', function(event) {
     if (event.target == document.getElementById('project-modal')) {
       document.getElementById('project-modal').style.display = "none";
       document.body.style.overflow = "";
     }
   });
-  
-  // Feedback form functionality
   const feedbackForm = document.getElementById('feedback-form');
   if (feedbackForm) {
     feedbackForm.addEventListener('submit', function(e) {
       e.preventDefault();
       const formData = new FormData(feedbackForm);
-      
       fetch(feedbackForm.action, {
         method: 'POST',
         body: formData,
