@@ -2,653 +2,931 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Hamza Ahmad | Software Engineer · Full Stack · Security</title>
-  <!-- Google Fonts + AOS -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-  <!-- Font Awesome 6 (free) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hamza Ahmad Software Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W2QM0PD4T3"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-W2QM0PD4T3');</script>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root {
+      --bg:        #050810;
+      --bg2:       #080d1a;
+      --bg3:       #0c1225;
+      --surface:   #0f1830;
+      --border:    rgba(99,179,255,0.10);
+      --border2:   rgba(99,179,255,0.20);
+      --fg:        #e8eef8;
+      --muted:     #6a7a99;
+      --accent:    #3b82f6;
+      --accent2:   #06b6d4;
+      --accent3:   #818cf8;
+      --green:     #22d3a0;
+      --yellow:    #fbbf24;
+      --red:       #f87171;
+      --grad:      linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+      --grad2:     linear-gradient(135deg, #818cf8 0%, #3b82f6 60%, #06b6d4 100%);
+      --font-mono: 'Space Mono', monospace;
+      --font-head: 'Syne', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --radius:    12px;
+      --glow:      0 0 40px rgba(59,130,246,0.15);
     }
-
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
-      background: #0a0c10;
-      color: #eef2ff;
-      font-family: 'Inter', sans-serif;
-      line-height: 1.5;
-      scroll-behavior: smooth;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
       overflow-x: hidden;
     }
-
-    /* Animated gradient background */
     body::before {
       content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at 20% 30%, rgba(0, 255, 136, 0.03), transparent 60%),
-                  radial-gradient(circle at 80% 70%, rgba(0, 136, 255, 0.03), transparent 60%);
-      pointer-events: none;
-      z-index: -2;
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 0; opacity: 0.4;
     }
-
-    /* Glassmorphism header */
-    header {
-      position: sticky;
-      top: 0;
-      backdrop-filter: blur(16px);
-      background: rgba(10, 12, 16, 0.75);
-      border-bottom: 1px solid rgba(0, 255, 136, 0.2);
-      z-index: 100;
-    }
-
-    nav {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .logo {
-      font-size: 1.6rem;
-      font-weight: 700;
-      background: linear-gradient(135deg, #00ff88, #00b8ff);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      letter-spacing: -0.02em;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: #cbd5e6;
-      font-weight: 500;
-      transition: 0.2s;
-      font-size: 0.95rem;
-    }
-
-    .nav-links a:hover {
-      color: #00ff88;
-    }
-
-    .menu-toggle {
-      display: none;
-      font-size: 1.8rem;
-      cursor: pointer;
-      color: #00ff88;
-    }
-
-    /* sections */
-    .section {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 5rem 2rem;
-    }
-
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 2rem;
-      position: relative;
-      display: inline-block;
-      letter-spacing: -0.02em;
-    }
-
-    h2:after {
+    body::after {
       content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 0;
-      width: 60px;
-      height: 3px;
-      background: linear-gradient(90deg, #00ff88, #00b8ff);
-      border-radius: 2px;
+      position: fixed; inset: 0;
+      background-image: linear-gradient(rgba(59,130,246,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(59,130,246,0.03) 1px,transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none; z-index: 0;
     }
 
-    /* Hero */
-    .hero-container {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 3rem;
-      justify-content: space-between;
+    /* NAV */
+    nav {
+      position: fixed; top:0; left:0; right:0; z-index:1000;
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 0 clamp(20px,5vw,60px); height:64px;
+      background: rgba(5,8,16,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: background .3s;
     }
-
-    .profile-pic-container {
-      flex: 1;
-      min-width: 200px;
-      text-align: center;
+    .nav-logo { font-family:var(--font-mono); font-size:14px; color:var(--accent); letter-spacing:1px; text-decoration:none; }
+    .nav-logo span { color:var(--muted); }
+    .nav-links { display:flex; gap:32px; list-style:none; }
+    .nav-links a {
+      font-family:var(--font-mono); font-size:12px; color:var(--muted);
+      text-decoration:none; letter-spacing:1px; text-transform:uppercase;
+      transition:color .2s; position:relative;
     }
-
-    .profile-pic {
-      width: 220px;
-      height: 220px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 3px solid rgba(0, 255, 136, 0.5);
-      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.5);
-      transition: transform 0.3s;
+    .nav-links a::after {
+      content:''; position:absolute; bottom:-4px; left:0; right:0;
+      height:1px; background:var(--accent); transform:scaleX(0); transition:transform .2s;
     }
-
-    .profile-pic:hover {
-      transform: scale(1.02);
+    .nav-links a:hover { color:var(--fg); }
+    .nav-links a:hover::after { transform:scaleX(1); }
+    .nav-cta { display:flex; gap:12px; }
+    .btn-outline {
+      font-family:var(--font-mono); font-size:11px; letter-spacing:1px;
+      text-transform:uppercase; padding:8px 16px; border:1px solid var(--border2);
+      border-radius:6px; color:var(--fg); text-decoration:none;
+      transition:all .2s; cursor:pointer; background:transparent;
     }
-
-    .hero-text {
-      flex: 2;
+    .btn-outline:hover { border-color:var(--accent); color:var(--accent); background:rgba(59,130,246,0.05); }
+    .btn-primary {
+      font-family:var(--font-mono); font-size:11px; letter-spacing:1px;
+      text-transform:uppercase; padding:8px 18px; border:none; border-radius:6px;
+      color:#fff; background:var(--grad); text-decoration:none; cursor:pointer;
+      transition:opacity .2s, transform .1s;
     }
+    .btn-primary:hover { opacity:.85; transform:translateY(-1px); }
+    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:4px; }
+    .hamburger span { display:block; width:22px; height:2px; background:var(--fg); border-radius:2px; transition:all .3s; }
 
-    .typewriter {
-      font-size: 2.5rem;
-      font-weight: 700;
+    /* SECTIONS */
+    section {
+      position:relative; z-index:1;
+      padding: clamp(80px,10vw,120px) clamp(20px,8vw,80px);
+      max-width:1200px; margin:0 auto;
     }
-
-    .accent {
-      color: #00ff88;
+    .section-label {
+      font-family:var(--font-mono); font-size:11px; letter-spacing:3px;
+      text-transform:uppercase; color:var(--accent); margin-bottom:16px;
+      display:flex; align-items:center; gap:12px;
     }
+    .section-label::before { content:''; display:inline-block; width:24px; height:1px; background:var(--accent); }
+    h2.section-title { font-family:var(--font-head); font-size:clamp(32px,5vw,52px); font-weight:800; line-height:1.1; margin-bottom:60px; color:var(--fg); }
 
-    /* experience cards */
-    .experience-list, .research-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
+    /* HERO */
+    #home {
+      min-height:100vh; display:flex; align-items:center; padding-top:100px;
+      max-width:100%; padding-left:clamp(20px,8vw,120px); padding-right:clamp(20px,8vw,120px);
     }
-
-    .experience-item, .research-item {
-      background: rgba(20, 24, 30, 0.6);
-      backdrop-filter: blur(4px);
-      border-radius: 20px;
-      padding: 1.5rem;
-      border: 1px solid rgba(0, 255, 136, 0.2);
-      transition: all 0.25s;
+    .hero-inner { display:grid; grid-template-columns:1fr auto; gap:60px; align-items:center; width:100%; max-width:1200px; margin:0 auto; }
+    .hero-badge {
+      display:inline-flex; align-items:center; gap:8px;
+      font-family:var(--font-mono); font-size:11px; letter-spacing:2px; text-transform:uppercase;
+      color:var(--green); background:rgba(34,211,160,0.08); border:1px solid rgba(34,211,160,0.25);
+      border-radius:100px; padding:6px 14px; margin-bottom:28px;
     }
+    .hero-badge::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--green); animation:pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+    .hero-name { font-family:var(--font-head); font-size:clamp(48px,8vw,96px); font-weight:800; line-height:0.95; letter-spacing:-2px; margin-bottom:8px; }
+    .hero-name .line1 { display:block; color:var(--fg); }
+    .hero-name .line2 { display:block; background:var(--grad2); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .hero-title { font-family:var(--font-mono); font-size:13px; color:var(--muted); letter-spacing:2px; text-transform:uppercase; margin:20px 0 28px; }
+    .hero-desc { font-size:17px; color:var(--muted); max-width:520px; line-height:1.8; margin-bottom:40px; }
+    .hero-desc strong { color:var(--fg); font-weight:500; }
+    .hero-actions { display:flex; gap:16px; flex-wrap:wrap; }
+    .hero-actions .btn-primary { font-size:12px; padding:12px 24px; }
+    .hero-actions .btn-outline { font-size:12px; padding:12px 24px; }
+    .hero-stats { display:flex; gap:32px; margin-top:56px; padding-top:40px; border-top:1px solid var(--border); }
+    .stat-num { font-family:var(--font-head); font-size:32px; font-weight:800; background:var(--grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; line-height:1; }
+    .stat-label { font-family:var(--font-mono); font-size:10px; letter-spacing:1px; text-transform:uppercase; color:var(--muted); margin-top:4px; }
 
-    .experience-item:hover, .research-item:hover {
-      border-color: #00ff88;
-      transform: translateY(-3px);
+    /* Hero card */
+    .hero-card {
+      width:280px; background:var(--surface); border:1px solid var(--border2);
+      border-radius:20px; padding:28px; position:relative; overflow:hidden; flex-shrink:0;
     }
-
-    .experience-date {
-      font-size: 0.8rem;
-      color: #00ff88;
-      font-family: 'Fira Code', monospace;
-      background: rgba(0,255,136,0.1);
-      padding: 0.2rem 0.6rem;
-      border-radius: 20px;
-      display: inline-block;
-      margin-bottom: 0.8rem;
+    .hero-card::before {
+      content:''; position:absolute; top:-40px; right:-40px; width:120px; height:120px;
+      background:radial-gradient(circle,rgba(59,130,246,0.2) 0%,transparent 70%); border-radius:50%;
     }
+    .hero-card-img { width:80px; height:80px; border-radius:50%; object-fit:cover; border:2px solid var(--border2); display:block; margin:0 auto 16px; background:var(--bg3); }
+    .hero-card-name { font-family:var(--font-head); font-size:18px; font-weight:700; text-align:center; margin-bottom:4px; }
+    .hero-card-role { font-family:var(--font-mono); font-size:10px; text-transform:uppercase; letter-spacing:1px; color:var(--accent); text-align:center; margin-bottom:20px; }
+    .hero-card-tags { display:flex; flex-wrap:wrap; gap:6px; justify-content:center; }
+    .tag { font-family:var(--font-mono); font-size:9px; letter-spacing:.5px; text-transform:uppercase; padding:4px 10px; border-radius:100px; background:rgba(59,130,246,0.08); border:1px solid rgba(59,130,246,0.18); color:var(--accent2); }
+    .tag.green { background:rgba(34,211,160,0.08); border-color:rgba(34,211,160,0.2); color:var(--green); }
+    .tag.purple { background:rgba(129,140,248,0.08); border-color:rgba(129,140,248,0.2); color:var(--accent3); }
+    .tag.yellow { background:rgba(251,191,36,0.08); border-color:rgba(251,191,36,0.2); color:var(--yellow); }
+    .hero-card-loc { margin-top:20px; padding-top:16px; border-top:1px solid var(--border); font-family:var(--font-mono); font-size:10px; color:var(--muted); text-align:center; letter-spacing:.5px; }
 
-    /* Skills bars */
-    .skills-title {
-      margin: 2rem 0 1.5rem;
-      font-size: 1.6rem;
-    }
+    /* ABOUT */
+    #about { padding-top:40px; }
+    .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:start; }
+    .about-text { font-size:16px; color:var(--muted); line-height:1.9; }
+    .about-text p + p { margin-top:16px; }
+    .about-text strong { color:var(--fg); font-weight:500; }
+    .about-terminal { background:var(--bg2); border:1px solid var(--border2); border-radius:var(--radius); overflow:hidden; font-family:var(--font-mono); font-size:12px; }
+    .terminal-bar { display:flex; align-items:center; gap:8px; padding:10px 16px; background:var(--surface); border-bottom:1px solid var(--border); }
+    .dot { width:10px; height:10px; border-radius:50%; }
+    .dot.r { background:var(--red); } .dot.y { background:var(--yellow); } .dot.g { background:var(--green); }
+    .terminal-title { color:var(--muted); font-size:11px; margin-left:6px; }
+    .terminal-body { padding:20px; line-height:2; }
+    .terminal-line { display:block; }
+    .t-prompt { color:var(--accent); } .t-cmd { color:var(--fg); } .t-out { color:var(--muted); }
+    .t-key { color:var(--accent2); } .t-val { color:var(--green); } .t-comment { color:#334466; }
 
-    .skills-bars {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
+    /* SKILLS */
+    .skills-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:16px; margin-top:0; }
+    .skill-card { background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius); padding:20px 24px; transition:border-color .2s,transform .2s; }
+    .skill-card:hover { border-color:var(--border2); transform:translateY(-2px); }
+    .skill-card-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; }
+    .skill-name { font-family:var(--font-mono); font-size:12px; letter-spacing:.5px; color:var(--fg); }
+    .skill-level { font-family:var(--font-mono); font-size:10px; letter-spacing:1px; text-transform:uppercase; }
+    .skill-level.expert { color:var(--green); }
+    .skill-level.advanced { color:var(--accent); }
+    .skill-level.intermediate { color:var(--yellow); }
+    .skill-level.basic { color:var(--muted); }
+    .skill-bar-bg { height:3px; background:var(--border); border-radius:2px; overflow:hidden; }
+    .skill-bar-fill { height:100%; border-radius:2px; width:0; transition:width 1.2s cubic-bezier(.4,0,.2,1); }
 
-    .skill-bar {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
+    /* EXPERIENCE */
+    .timeline { position:relative; padding-left:32px; }
+    .timeline::before { content:''; position:absolute; left:0; top:8px; bottom:8px; width:1px; background:linear-gradient(180deg,var(--accent) 0%,transparent 100%); }
+    .timeline-item { position:relative; margin-bottom:48px; }
+    .timeline-item::before { content:''; position:absolute; left:-36px; top:6px; width:10px; height:10px; border-radius:50%; background:var(--accent); border:2px solid var(--bg); box-shadow:0 0 0 4px rgba(59,130,246,0.15); }
+    .timeline-date { font-family:var(--font-mono); font-size:10px; letter-spacing:1px; text-transform:uppercase; color:var(--accent2); margin-bottom:8px; }
+    .timeline-role { font-family:var(--font-head); font-size:20px; font-weight:700; color:var(--fg); margin-bottom:4px; }
+    .timeline-where { font-family:var(--font-mono); font-size:11px; color:var(--muted); margin-bottom:12px; }
+    .timeline-desc { font-size:14px; color:var(--muted); line-height:1.8; max-width:600px; }
 
-    .skill-label {
-      width: 140px;
-      font-weight: 500;
-    }
-
-    .bar-bg {
-      flex: 1;
-      height: 8px;
-      background: #22272e;
-      border-radius: 10px;
-      overflow: hidden;
-    }
-
-    .bar-fill {
-      height: 100%;
-      width: 0%;
-      border-radius: 10px;
-      transition: width 1s ease-out;
-    }
-
-    .skill-percent {
-      width: 70px;
-      font-size: 0.8rem;
-      color: #00ff88;
-      font-family: monospace;
-    }
-
-    /* project grid */
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 2rem;
-      margin-top: 1rem;
-    }
-
+    /* PROJECTS */
+    .projects-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:20px; }
     .project-card {
-      background: #11161e;
-      border-radius: 24px;
-      padding: 1.5rem;
-      border: 1px solid #2a313c;
-      transition: transform 0.2s, border-color 0.2s;
+      background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius);
+      padding:28px; display:flex; flex-direction:column; gap:16px;
+      transition:border-color .2s,transform .2s,box-shadow .2s; position:relative; overflow:hidden;
     }
+    .project-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:var(--grad); transform:scaleX(0); transform-origin:left; transition:transform .3s; }
+    .project-card:hover { border-color:var(--border2); transform:translateY(-4px); box-shadow:var(--glow); }
+    .project-card:hover::before { transform:scaleX(1); }
+    .project-card.featured { grid-column:span 2; background:linear-gradient(135deg,rgba(59,130,246,0.05) 0%,rgba(6,182,212,0.05) 100%); border-color:rgba(59,130,246,0.25); }
+    .project-card.featured::before { transform:scaleX(1); }
+    .featured-badge { display:inline-flex; align-items:center; gap:6px; font-family:var(--font-mono); font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--yellow); background:rgba(251,191,36,0.08); border:1px solid rgba(251,191,36,0.2); border-radius:100px; padding:4px 10px; margin-bottom:4px; }
+    .project-num { font-family:var(--font-mono); font-size:11px; color:var(--border2); letter-spacing:1px; }
+    .project-title { font-family:var(--font-head); font-size:22px; font-weight:700; color:var(--fg); line-height:1.2; }
+    .project-desc { font-size:14px; color:var(--muted); line-height:1.8; flex:1; }
+    .project-stack { display:flex; flex-wrap:wrap; gap:6px; }
+    .stack-tag { font-family:var(--font-mono); font-size:9px; letter-spacing:.5px; text-transform:uppercase; padding:3px 9px; border-radius:4px; background:var(--surface); border:1px solid var(--border); color:var(--muted); }
+    .project-links { display:flex; gap:12px; align-items:center; padding-top:12px; border-top:1px solid var(--border); }
+    .project-link { font-family:var(--font-mono); font-size:11px; letter-spacing:.5px; color:var(--accent); text-decoration:none; display:flex; align-items:center; gap:6px; transition:color .2s; }
+    .project-link:hover { color:var(--accent2); }
+    .project-link svg { width:12px; height:12px; }
 
-    .project-card:hover {
-      transform: translateY(-5px);
-      border-color: #00ff88;
-      box-shadow: 0 15px 30px -12px rgba(0,255,136,0.15);
+    /* RESEARCH */
+    .research-list { display:flex; flex-direction:column; gap:16px; }
+    .research-item { background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius); padding:28px; display:grid; grid-template-columns:auto 1fr auto; gap:24px; align-items:start; transition:border-color .2s; }
+    .research-item:hover { border-color:var(--border2); }
+    .research-num { font-family:var(--font-mono); font-size:28px; font-weight:700; color:var(--border2); line-height:1; min-width:32px; }
+    .research-status { font-family:var(--font-mono); font-size:10px; letter-spacing:1px; text-transform:uppercase; padding:4px 12px; border-radius:100px; }
+    .research-status.published { background:rgba(34,211,160,0.08); border:1px solid rgba(34,211,160,0.2); color:var(--green); }
+    .research-status.current { background:rgba(251,191,36,0.08); border:1px solid rgba(251,191,36,0.2); color:var(--yellow); }
+    .research-title { font-family:var(--font-head); font-size:18px; font-weight:700; color:var(--fg); margin-bottom:8px; }
+    .research-desc { font-size:14px; color:var(--muted); line-height:1.8; }
+
+    /* CONTACT */
+    #contact { padding-bottom:40px; }
+    .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:start; }
+    .contact-links { display:flex; flex-direction:column; gap:12px; margin-top:8px; }
+    .contact-link-item { display:flex; align-items:center; gap:16px; padding:16px 20px; background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius); text-decoration:none; transition:border-color .2s,transform .2s; }
+    .contact-link-item:hover { border-color:var(--border2); transform:translateX(4px); }
+    .contact-icon-wrap { width:36px; height:36px; border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .contact-link-text { font-size:14px; color:var(--fg); }
+    .contact-link-sub { font-family:var(--font-mono); font-size:10px; color:var(--muted); }
+    .feedback-form { background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius); padding:32px; }
+    .form-title { font-family:var(--font-head); font-size:20px; font-weight:700; margin-bottom:24px; }
+    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px; }
+    .form-input { width:100%; padding:12px 16px; background:var(--bg); border:1px solid var(--border); border-radius:8px; color:var(--fg); font-family:var(--font-body); font-size:14px; outline:none; transition:border-color .2s; }
+    .form-input:focus { border-color:var(--accent); }
+    .form-input::placeholder { color:var(--muted); }
+    textarea.form-input { resize:vertical; min-height:120px; margin-bottom:12px; }
+    .form-submit { width:100%; padding:13px; background:var(--grad); border:none; border-radius:8px; color:#fff; font-family:var(--font-mono); font-size:12px; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:opacity .2s; }
+    .form-submit:hover { opacity:.85; }
+
+    /* FOOTER */
+    footer { position:relative; z-index:1; border-top:1px solid var(--border); padding:32px clamp(20px,8vw,80px); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+    .footer-left { font-family:var(--font-mono); font-size:11px; color:var(--muted); }
+    .footer-left span { color:var(--accent); }
+    .footer-right { font-family:var(--font-mono); font-size:11px; color:var(--muted); }
+
+    /* REVEAL */
+    .reveal { opacity:0; transform:translateY(24px); transition:opacity .6s ease,transform .6s ease; }
+    .reveal.visible { opacity:1; transform:none; }
+
+    /* MOBILE NAV */
+    .mobile-nav { display:none; position:fixed; inset:64px 0 0 0; background:rgba(5,8,16,0.98); backdrop-filter:blur(20px); z-index:999; flex-direction:column; align-items:center; justify-content:center; gap:32px; }
+    .mobile-nav.open { display:flex; }
+    .mobile-nav a { font-family:var(--font-head); font-size:28px; font-weight:700; color:var(--fg); text-decoration:none; transition:color .2s; }
+    .mobile-nav a:hover { color:var(--accent); }
+
+    /* RESPONSIVE */
+    @media (max-width:900px) {
+      .hero-inner { grid-template-columns:1fr; }
+      .hero-card { display:none; }
+      .about-grid { grid-template-columns:1fr; }
+      .contact-grid { grid-template-columns:1fr; }
+      .project-card.featured { grid-column:span 1; }
+      .research-item { grid-template-columns:1fr; }
+      .research-num { display:none; }
+      .nav-links { display:none; } .nav-cta { display:none; }
+      .hamburger { display:flex; }
+      .form-row { grid-template-columns:1fr; }
     }
-
-    .project-card h3 {
-      font-size: 1.4rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .project-actions {
-      display: flex;
-      gap: 1rem;
-      margin-top: 1.25rem;
-      flex-wrap: wrap;
-    }
-
-    .accent-link {
-      color: #00ff88;
-      text-decoration: none;
-      font-weight: 500;
-      border-bottom: 1px solid transparent;
-      transition: 0.2s;
-    }
-
-    .accent-link:hover {
-      border-bottom-color: #00ff88;
-    }
-
-    .project-details-btn {
-      background: none;
-      border: 1px solid #3a4455;
-      color: #cbd5e6;
-      padding: 0.3rem 1rem;
-      border-radius: 30px;
-      cursor: pointer;
-      font-size: 0.8rem;
-      transition: 0.2s;
-    }
-
-    .project-details-btn:hover {
-      background: #00ff8822;
-      border-color: #00ff88;
-      color: #00ff88;
-    }
-
-    /* Contact bar */
-    .contact-bar {
-      display: flex;
-      gap: 2rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin: 2rem 0;
-    }
-
-    .contact-icon {
-      transition: transform 0.2s;
-      display: inline-block;
-    }
-
-    .contact-icon:hover {
-      transform: scale(1.1);
-    }
-
-    /* feedback form */
-    .feedback-form {
-      max-width: 600px;
-      background: #0f131a;
-      padding: 2rem;
-      border-radius: 28px;
-      margin-top: 2rem;
-    }
-
-    .form-row {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .feedback-form input, .feedback-form textarea {
-      width: 100%;
-      background: #1a1f2a;
-      border: 1px solid #2d3440;
-      padding: 0.8rem 1rem;
-      border-radius: 14px;
-      color: white;
-      font-family: inherit;
-    }
-
-    .feedback-form button {
-      background: #00ff88;
-      border: none;
-      padding: 0.8rem 1.8rem;
-      border-radius: 40px;
-      font-weight: 700;
-      color: #0a0c10;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-
-    .feedback-form button:hover {
-      background: #00e07a;
-      transform: scale(1.02);
-    }
-
-    /* resume button */
-    .resume-btn {
-      background: linear-gradient(135deg, #00ff88, #00b8ff);
-      border: none;
-      padding: 0.6rem 1.4rem;
-      border-radius: 40px;
-      font-weight: 600;
-      color: #0a0c10;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      cursor: pointer;
-      font-size: 0.9rem;
-      transition: 0.2s;
-      margin-top: 0.5rem;
-    }
-
-    .resume-btn i {
-      font-size: 1rem;
-    }
-
-    .resume-btn:hover {
-      transform: translateY(-2px);
-      filter: brightness(1.05);
-    }
-
-    /* modal */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.8);
-      backdrop-filter: blur(6px);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .modal-content {
-      background: #11161e;
-      max-width: 550px;
-      width: 90%;
-      border-radius: 28px;
-      padding: 2rem;
-      border: 1px solid #00ff88;
-      position: relative;
-    }
-
-    .close-modal {
-      position: absolute;
-      top: 1rem;
-      right: 1.5rem;
-      font-size: 1.8rem;
-      cursor: pointer;
-      color: #aaa;
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem;
-      border-top: 1px solid #1f2530;
-      font-size: 0.8rem;
-      color: #6c7a8e;
-    }
-
-    @media (max-width: 800px) {
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background: rgba(10,12,16,0.95);
-        padding: 1rem;
-      }
-      .nav-links.show {
-        display: flex;
-      }
-      .menu-toggle {
-        display: block;
-      }
-      .hero-container {
-        flex-direction: column;
-        text-align: center;
-      }
-      h2:after {
-        left: 50%;
-        transform: translateX(-50%);
-        width: 80px;
-      }
-      h2 {
-        text-align: center;
-        display: block;
-      }
-      .skill-label {
-        width: 120px;
-      }
+    @media (max-width:600px) {
+      .projects-grid { grid-template-columns:1fr; }
+      .hero-stats { gap:20px; flex-wrap:wrap; }
     }
   </style>
 </head>
 <body>
-<header>
-  <nav>
-    <div class="logo">Hamzax.dev</div>
-    <div class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></div>
-    <ul class="nav-links" id="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#research">Research</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-</header>
 
-<section id="home" class="section">
-  <div class="hero-container">
-    <div class="profile-pic-container" data-aos="zoom-in">
-      <img src="https://ui-avatars.com/api/?background=0A0C10&color=00ff88&rounded=true&bold=true&size=220&name=Hamza+Ahmad" alt="Hamza Ahmad" class="profile-pic" />
-    </div>
-    <div class="hero-text" data-aos="fade-up">
-      <h1 class="typewriter">Hello, I'm <span class="accent">Hamza Ahmad</span></h1>
-      <p style="font-size:1.2rem; margin-top: 1rem;">💻 CS Student | Full-Stack Engineer | Security & Systems · DevOps · AI Enthusiast</p>
-      <p>Building high‑scale, cryptographically secure systems. Passionate about real‑time infrastructure, distributed consistency, and edge computing.</p>
-      <button class="resume-btn" id="download-resume"><i class="fas fa-file-pdf"></i> Download Resume (PDF)</button>
-    </div>
+<nav id="navbar">
+  <a href="#home" class="nav-logo">hamza<span>@dev</span>:~$</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-cta">
+    <a href="resume.pdf" download class="btn-outline">↓ Resume</a>
+    <a href="#contact" class="btn-primary">Hire Me</a>
   </div>
-</section>
-
-<section id="about" class="section">
-  <h2 data-aos="fade-right">About Me</h2>
-  <p data-aos="fade-up" style="max-width: 780px;">I'm Hamza Ahmad, a Computer Science student at UET Lahore and a full‑stack engineer with deep expertise in Ruby on Rails, Firebase, and modern JavaScript. I design self‑hosted, production‑grade applications — from real‑time QR attendance systems (HMAC‑secured, Firestore transactions) to SaaS platforms deployed on bare metal with Cloudflare. I blend security, DevOps, and clean UI to deliver enterprise‑ready solutions.</p>
-</section>
-
-<section id="experience" class="section">
-  <h2 data-aos="fade-right">Experience</h2>
-  <div class="experience-list">
-    <div class="experience-item" data-aos="fade-up"><h3>Software Engineer Intern · CribbleTech Lahore</h3><span class="experience-date">May 2025 – Present</span><p>Developing full‑stack features, optimizing database queries, and contributing to production Ruby on Rails applications. Embraced agile workflows and cloud infrastructure.</p></div>
-    <div class="experience-item" data-aos="fade-up"><h3>Freelance Full‑Stack Developer</h3><span class="experience-date">Sep 2024 – June 2025</span><p>Delivered 15+ projects (console apps, web dashboards, automation scripts) for global clients. Achieved 100% on‑time delivery and robust error handling.</p></div>
-    <div class="experience-item" data-aos="fade-up"><h3>Project Lead · UET Societies</h3><span class="experience-date">Jan 2024 – Present</span><p>Coordinated cross‑functional teams for AI/ robotics showcases. Managed technical roadmaps, version control, and deployment pipelines.</p></div>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
   </div>
-  <h3 class="skills-title" data-aos="zoom-in">Technical Arsenal</h3>
-  <div class="skills-bars" data-aos="fade-up">
-    <div class="skill-bar"><span class="skill-label">Ruby on Rails</span><div class="bar-bg"><div class="bar-fill" style="width:92%"></div></div><span class="skill-percent">Expert</span></div>
-    <div class="skill-bar"><span class="skill-label">Python / C++</span><div class="bar-bg"><div class="bar-fill" style="width:88%"></div></div><span class="skill-percent">Advanced</span></div>
-    <div class="skill-bar"><span class="skill-label">Firebase (Auth, Firestore)</span><div class="bar-bg"><div class="bar-fill" style="width:90%"></div></div><span class="skill-percent">Expert</span></div>
-    <div class="skill-bar"><span class="skill-label">DevOps (Ubuntu, Docker, Cloudflare)</span><div class="bar-bg"><div class="bar-fill" style="width:85%"></div></div><span class="skill-percent">Advanced</span></div>
-    <div class="skill-bar"><span class="skill-label">HTML/CSS/JS + React</span><div class="bar-bg"><div class="bar-fill" style="width:88%"></div></div><span class="skill-percent">Advanced</span></div>
-    <div class="skill-bar"><span class="skill-label">Security (HMAC, JWT, App Check)</span><div class="bar-bg"><div class="bar-fill" style="width:85%"></div></div><span class="skill-percent">Advanced</span></div>
-  </div>
-</section>
+</nav>
 
-<section id="research" class="section">
-  <h2 data-aos="fade-right">Research & Publications</h2>
-  <div class="research-list">
-    <div class="research-item" data-aos="fade-up"><h3>How AI Actually Works (Current)</h3><p>Investigating interpretability, prompt engineering, and domain‑specific AI agents for educational tools.</p></div>
-    <div class="research-item" data-aos="fade-up"><h3>Voice-Activated Robot Control System (Published)</h3><p>Low‑cost, speech‑controlled robotics platform using Arduino and Bluetooth. Paper presented at university symposium.</p></div>
-    <div class="research-item" data-aos="fade-up"><h3>Boolean Algebra & Machine Language (Published)</h3><p>Deep dive into binary logic, CPU instruction sets, and low‑level programming — bridging hardware and software abstractions.</p></div>
-  </div>
-</section>
+<div class="mobile-nav" id="mobile-nav">
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#experience" onclick="toggleMenu()">Experience</a>
+  <a href="#projects" onclick="toggleMenu()">Projects</a>
+  <a href="#research" onclick="toggleMenu()">Research</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+  <a href="resume.pdf" download class="btn-primary" style="font-size:14px;padding:12px 28px;">↓ Download Resume</a>
+</div>
 
-<section id="projects" class="section">
-  <h2 data-aos="fade-right">Key Projects</h2>
-  <div class="project-grid">
-    <!-- SecureEntry - featured project -->
-    <div class="project-card" data-aos="flip-left">
-      <h3>🔐 SecureEntry · QR Attendance System</h3>
-      <p>Production‑grade event entry system used for 600+ students. HMAC‑SHA256 + per‑student Firestore token, atomic transactions, 3‑pass Android QR pipeline, real‑time multi‑device sync, and Brevo email delivery with idempotent resume.</p>
-      <div class="project-actions">
-        <a href="https://github.com/HamzaAhmad-098/SecureEntry" class="accent-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-        <a href="https://welcome-25.firebaseapp.com" class="accent-link" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-        <button class="project-details-btn" data-project="secureentry">Details</button>
+<!-- HERO -->
+<section id="home">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-badge">Available for opportunities</div>
+      <h1 class="hero-name">
+        <span class="line1">Hamza</span>
+        <span class="line2">Ahmad</span>
+      </h1>
+      <p class="hero-title">// Full‑Stack Engineer · DevOps · Robotics &amp; AI</p>
+      <p class="hero-desc">
+        CS student at <strong>UET Lahore</strong> (CGPA 3.672) building real‑world systems 
+        from <strong>SaaS platforms</strong> to <strong>live event infrastructure</strong> serving
+        hundreds of users. I ship things that actually work.
+      </p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn-primary">View Projects →</a>
+        <a href="resume.pdf" download class="btn-outline">↓ Download Resume</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">16+</div>
+          <div class="stat-label">GitHub Repos</div>
+        </div>
+       <div>
+          <div class="stat-num">12+</div>
+          <div class="stat-label">Projects Built</div>
+        </div>
+        <div>
+          <div class="stat-num">614</div>
+          <div class="stat-label">Live Event Users</div>
+        </div>
+        <div>
+          <div class="stat-num">3.672</div>
+          <div class="stat-label">CGPA</div>
+        </div>
+        <div>
+          <div class="stat-num">2+</div>
+          <div class="stat-label">Years Exp.</div>
+        </div>
       </div>
     </div>
-    <div class="project-card" data-aos="flip-left">
-      <h3>M.BeautyBloom · E‑commerce</h3>
-      <p>Full‑stack MERN cosmetics platform with JWT, real‑time order tracking, admin dashboard, and Cloudinary media optimization.</p>
-      <div class="project-actions"><a href="https://github.com/HamzaAhmad-098/M.BeautyBloom" class="accent-link">GitHub</a><a href="https://www.mbeautybloom.shop" class="accent-link">Live</a><button class="project-details-btn" data-project="beauty">Details</button></div>
-    </div>
-    <div class="project-card" data-aos="flip-left">
-      <h3>Teacher Helper App (Rails)</h3>
-      <p>Automated grading & test evaluation system using API keys. Hosted on self‑managed Ubuntu server with custom domain.</p>
-      <div class="project-actions"><a href="https://github.com/HamzaAhmad-098/RubyOnRails" class="accent-link">GitHub</a><button class="project-details-btn" data-project="teacher">Details</button></div>
-    </div>
-    <div class="project-card" data-aos="flip-left">
-      <h3>DevBoard · Project Management</h3>
-      <p>Rails ticket system with role‑based access, comments, history, and verification workflow.</p>
-      <div class="project-actions"><a href="https://github.com/HamzaAhmad-098/Rails-7-Test-Project" class="accent-link">GitHub</a><button class="project-details-btn" data-project="devboard">Details</button></div>
-    </div>
-    <div class="project-card" data-aos="flip-left">
-      <h3>Path Finder's Duel (C++ Console)</h3>
-      <p>ASCII multiplayer pathfinding game — algorithmic decision making, real‑time input handling.</p>
-      <div class="project-actions"><a href="https://github.com/HamzaAhmad-098/PF-Semester-1" class="accent-link">GitHub</a><button class="project-details-btn" data-project="path">Details</button></div>
-    </div>
-    <div class="project-card" data-aos="flip-left">
-      <h3>Voice Controlled Robot (Arduino)</h3>
-      <p>Bluetooth HC‑06 voice recognition module, hardware integration, and autonomous movement.</p>
-      <div class="project-actions"><button class="project-details-btn" data-project="voice">Details</button></div>
+    <div class="hero-card">
+      <img src="profile.jpg" alt="Hamza Ahmad" class="hero-card-img" />
+      <div class="hero-card-name">Hamza Ahmad</div>
+      <div class="hero-card-role">Software Engineer</div>
+      <div class="hero-card-tags">
+        <span class="tag green">MERN Stack</span>
+        <span class="tag">Ruby on Rails</span>
+        <span class="tag purple">Firebase</span>
+        <span class="tag">Python</span>
+        <span class="tag yellow">Arduino</span>
+        <span class="tag purple">DevOps</span>
+        <span class="tag">C++</span>
+      </div>
+      <div class="hero-card-loc">📍 Lahore, Pakistan · <span style="color:var(--green)">Open to Work</span></div>
     </div>
   </div>
 </section>
 
-<section id="contact" class="section">
-  <h2 data-aos="zoom-out">Connect</h2>
-  <div class="contact-bar" data-aos="zoom-in">
-    <a href="https://instagram.com/hja7030" class="contact-icon" target="_blank"><i class="fab fa-instagram fa-2x" style="color:#E4405F;"></i></a>
-    <a href="https://wa.me/923297474472" class="contact-icon" target="_blank"><i class="fab fa-whatsapp fa-2x" style="color:#25D366;"></i></a>
-    <a href="https://www.linkedin.com/in/hamzaxdevelopers" class="contact-icon" target="_blank"><i class="fab fa-linkedin-in fa-2x" style="color:#0A66C2;"></i></a>
-    <a href="https://github.com/HamzaAhmad-098" class="contact-icon" target="_blank"><i class="fab fa-github fa-2x"></i></a>
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">About Me</div>
+  <h2 class="section-title">I build things<br>that <em style="font-style:normal;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">ship.</em></h2>
+  <div class="about-grid reveal">
+    <div class="about-text">
+      <p>I'm a <strong>Computer Science student at UET Lahore</strong> (CGPA 3.65) and full-stack engineer who doesn't stop at theory I build and deploy real systems. I've self-hosted apps on my own Ubuntu server with custom domains, built SaaS platforms with live users, and shipped a complete <strong>QR-based event entry system</strong> used by 614 students at a university event zero downtime, shield & certificate awarded on stage.</p>
+      <p>My stack spans <strong>MERN, Ruby on Rails, Python, C++, C#</strong>, and I have deep hands-on experience with <strong>Firebase/Firestore, PostgreSQL, MySQL, Ubuntu Server, Cloudflare tunnels, SMTP automation, and IoT/Arduino</strong>. I host real projects on real infrastructure not just localhost.</p>
+      <p>I'm a <strong>Honhar Scholarship</strong> recipient and actively looking for global opportunities in software engineering where ownership and impact matter.</p>
+    </div>
+    <div class="about-terminal reveal">
+      <div class="terminal-bar">
+        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+        <span class="terminal-title">hamza@dev:~$ profile.json</span>
+      </div>
+      <div class="terminal-body">
+        <span class="terminal-line"><span class="t-comment">// hamza_ahmad.json</span></span>
+        <span class="terminal-line">{</span>
+        <span class="terminal-line">&nbsp;&nbsp;<span class="t-key">"name"</span>: <span class="t-val">"Hamza Ahmad"</span>,</span>
+        <span class="terminal-line">&nbsp;&nbsp;<span class="t-key">"university"</span>: <span class="t-val">"UET Lahore"</span>,</span>
+        <span class="terminal-line">&nbsp;&nbsp;<span class="t-key">"cgpa"</span>: <span class="t-val">3.65</span>,</span>
+        <span class="terminal-line">&nbsp;&nbsp;<span class="t-key">"location"</span>: <span class="t-val">"Lahore, Pakistan"</span>,</span>
+        <span class="terminal-line">&nbsp;&nbsp;<span class="t-key">"status"</span>: <span class="t-val">"Open to Work 🟢"</span>,</span>
+        <span class="terminal-line">&nbsp;&nbsp;<span class="t-key">"scholarship"</span>: <span class="t-val">"Honhar Program"</span>,</span>
+        <span class="terminal-line">&nbsp;&nbsp;<span class="t-key">"stack"</span>: [<span class="t-val">"MERN"</span>, <span class="t-val">"Rails"</span>, <span class="t-val">"Python"</span>,</span>
+        <span class="terminal-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-val">"C++"</span>, <span class="t-val">"Firebase"</span>, <span class="t-val">"DevOps"</span>],</span>
+        <span class="terminal-line">&nbsp;&nbsp;<span class="t-key">"github_repos"</span>: <span class="t-val">16</span>,</span>
+        <span class="terminal-line">&nbsp;&nbsp;<span class="t-key">"live_users_served"</span>: <span class="t-val">614</span></span>
+        <span class="terminal-line">}</span>
+      </div>
+    </div>
   </div>
-  <p style="text-align:center;">Email: <a href="mailto:hamzaxdevelopers1223@gmail.com" class="accent-link">hamzaxdevelopers1223@gmail.com</a></p>
-  <form id="feedback-form" class="feedback-form" data-aos="fade-up" action="https://formspree.io/f/mvgregeg" method="POST">
-    <div class="form-row"><input type="text" name="name" placeholder="Full name" required /><input type="email" name="email" placeholder="Email" required /></div>
-    <textarea name="opinion" rows="4" placeholder="Your feedback or collaboration idea..."></textarea>
-    <button type="submit">Send Message <i class="fas fa-paper-plane"></i></button>
-  </form>
+
+  <!-- SKILLS -->
+  <div style="margin-top:60px">
+    <div class="section-label" style="margin-bottom:28px">Technical Skills</div>
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <div class="skill-card-head"><span class="skill-name">C++</span><span class="skill-level expert">Expert</span></div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="90" style="background:linear-gradient(90deg,#3b82f6,#06b6d4)"></div></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-card-head"><span class="skill-name">Ruby on Rails</span><span class="skill-level expert">Expert</span></div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="90" style="background:linear-gradient(90deg,#22d3a0,#06b6d4)"></div></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-card-head"><span class="skill-name">HTML / CSS / JS</span><span class="skill-level expert">Expert</span></div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="90" style="background:linear-gradient(90deg,#f97316,#fbbf24)"></div></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-card-head"><span class="skill-name">React.js + Redux Toolkit</span><span class="skill-level advanced">Advanced</span></div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="80" style="background:linear-gradient(90deg,#3b82f6,#818cf8)"></div></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-card-head"><span class="skill-name">Node.js + Express.js</span><span class="skill-level advanced">Advanced</span></div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="80" style="background:linear-gradient(90deg,#22d3a0,#3b82f6)"></div></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-card-head"><span class="skill-name">MongoDB</span><span class="skill-level advanced">Advanced</span></div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="78" style="background:linear-gradient(90deg,#22d3a0,#06b6d4)"></div></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-card-head"><span class="skill-name">Python</span><span class="skill-level advanced">Advanced</span></div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="70" style="background:linear-gradient(90deg,#818cf8,#3b82f6)"></div></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-card-head"><span class="skill-name">C# / .NET Framework</span><span class="skill-level advanced">Advanced</span></div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="75" style="background:linear-gradient(90deg,#a78bfa,#818cf8)"></div></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-card-head"><span class="skill-name">Firebase / Firestore</span><span class="skill-level advanced">Advanced</span></div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="82" style="background:linear-gradient(90deg,#fbbf24,#f97316)"></div></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-card-head"><span class="skill-name">PostgreSQL / MySQL</span><span class="skill-level advanced">Advanced</span></div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="78" style="background:linear-gradient(90deg,#06b6d4,#3b82f6)"></div></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-card-head"><span class="skill-name">DevOps / Ubuntu Server</span><span class="skill-level advanced">Advanced</span></div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="80" style="background:linear-gradient(90deg,#06b6d4,#22d3a0)"></div></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-card-head"><span class="skill-name">Git / GitHub</span><span class="skill-level advanced">Advanced</span></div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="85" style="background:linear-gradient(90deg,#818cf8,#3b82f6)"></div></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-card-head"><span class="skill-name">Arduino / Robotics / IoT</span><span class="skill-level expert">Expert</span></div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="88" style="background:linear-gradient(90deg,#22d3a0,#06b6d4)"></div></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-card-head"><span class="skill-name">Cloudflare / Nginx / SSH</span><span class="skill-level advanced">Advanced</span></div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="75" style="background:linear-gradient(90deg,#f97316,#fbbf24)"></div></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-card-head"><span class="skill-name">SMTP / Email Automation</span><span class="skill-level advanced">Advanced</span></div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="80" style="background:linear-gradient(90deg,#06b6d4,#22d3a0)"></div></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-card-head"><span class="skill-name">x86 Assembly (MASM)</span><span class="skill-level intermediate">Intermediate</span></div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="55" style="background:linear-gradient(90deg,#fbbf24,#f97316)"></div></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-card-head"><span class="skill-name">JWT Auth / REST APIs</span><span class="skill-level advanced">Advanced</span></div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="80" style="background:linear-gradient(90deg,#3b82f6,#06b6d4)"></div></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-card-head"><span class="skill-name">AI / Machine Learning</span><span class="skill-level intermediate">Intermediate</span></div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="40" style="background:linear-gradient(90deg,#818cf8,#a78bfa)"></div></div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<div id="project-modal" class="modal"><div class="modal-content"><span class="close-modal">&times;</span><div id="modal-body"></div></div></div>
-<footer><p>© 2025 Hamza Ahmad — engineered with precision & security-first mindset</p></footer>
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Experience</div>
+  <h2 class="section-title">Where I've<br>worked.</h2>
+  <div class="timeline">
+    <div class="timeline-item reveal">
+      <div class="timeline-date">May 2025 – Aug 2025</div>
+      <div class="timeline-role">Software Engineering Intern</div>
+      <div class="timeline-where">CribbleTech · Lahore, Pakistan</div>
+      <div class="timeline-desc">Built and shipped production-grade features at a Lahore-based software company. Gained deep exposure to real-world codebases, agile workflows, and client delivery cycles. Strengthened full-stack skills in a professional team environment.</div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-date">Sep 2024 – Jun 2025</div>
+      <div class="timeline-role">Freelance Developer</div>
+      <div class="timeline-where">Fiverr · Upwork · Remote</div>
+      <div class="timeline-desc">Built custom software for international clients console games, management systems, data tools, and algorithm projects in C++, C#, and Python. Delivered complex solutions on time with clear communication and consistent results.</div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-date">Jan 2024 – May 2025</div>
+      <div class="timeline-role">Technical Lead Group Projects</div>
+      <div class="timeline-where">UET Lahore · University Societies</div>
+      <div class="timeline-desc">Led cross-functional student teams across multiple CS projects at UET and inter-university events. Architected and deployed a full QR-based event entry system used live by 614 students zero failures. Received appreciation shield & certificate from the CS Department on stage at CS Riwayat 2k26.</div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-date">May 2024 – Present</div>
+      <div class="timeline-role">Tech Tutor</div>
+      <div class="timeline-where">Self-employed · Lahore & Kasur (Online + Physical)</div>
+      <div class="timeline-desc">Teaching CS, Mathematics, and programming to students across Pakistan. Specialised in SSC/HSSC preparation and university entry tests (ECAT/NUST) for top-ranked institutions.</div>
+    </div>
+  </div>
+</section>
 
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Projects</div>
+  <h2 class="section-title">Things I've<br>built.</h2>
+  <div class="projects-grid">
+
+    <!-- FEATURED -->
+    <div class="project-card featured reveal">
+      <div>
+        <div class="featured-badge">⭐ Featured · Production · CS Riwayat 2k26</div>
+        <div class="project-num">01</div>
+      </div>
+      <div class="project-title">SecureEntry QR Event Access System</div>
+      <div class="project-desc">Production-grade, real-time event entry system built for UET's CS Riwayat 2026. Admin panel for bulk Excel upload → Firestore (499/batch), HMAC-secured QR token generation, automated email delivery via Brevo/SMTP for 614 students, real-time scanner UI, live attendance dashboard, bounce detection with WhatsApp fallback, and duplicate entry prevention. Deployed with zero downtime on event day. Received appreciation shield & certificate from CS Department on stage.</div>
+      <div class="project-stack">
+        <span class="stack-tag">Firebase</span><span class="stack-tag">Firestore</span>
+        <span class="stack-tag">Python</span><span class="stack-tag">QR Codes</span>
+        <span class="stack-tag">HMAC Security</span><span class="stack-tag">Brevo SMTP</span>
+        <span class="stack-tag">HTML/CSS/JS</span><span class="stack-tag">Excel Parsing</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/HamzaAhmad-098/secure-entry-qr-system" class="project-link" target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+        <a href="https://welcome-25.web.app" class="project-link" target="_blank">↗ Live Demo</a>
+        <span style="font-family:var(--font-mono);font-size:11px;color:var(--green);">✓ 614 users · Zero downtime</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-num">02</div>
+      <div class="project-title">M.BeautyBloom</div>
+      <div class="project-desc">Full-stack e-commerce platform for premium cosmetics. JWT authentication, real-time order tracking, admin dashboard, Cloudinary image pipeline, and mobile-first design. Serving real customers at mbeautybloom.shop.</div>
+      <div class="project-stack">
+        <span class="stack-tag">MongoDB</span><span class="stack-tag">Express</span>
+        <span class="stack-tag">React</span><span class="stack-tag">Node.js</span>
+        <span class="stack-tag">Redux Toolkit</span><span class="stack-tag">Cloudinary</span><span class="stack-tag">JWT</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/HamzaAhmad-098/M.BeautyBloom" class="project-link" target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+        <a href="https://www.mbeautybloom.shop" class="project-link" target="_blank">↗ Live Demo</a>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-num">03</div>
+      <div class="project-title">CloudKartPOS</div>
+      <div class="project-desc">Modern cloud-ready POS system in Ruby on Rails for retail shops, pharmacies, and cafés. Features inventory management, billing, barcode support, and multi-business configuration.</div>
+      <div class="project-stack">
+        <span class="stack-tag">Ruby on Rails</span><span class="stack-tag">PostgreSQL</span>
+        <span class="stack-tag">Barcode</span><span class="stack-tag">POS</span><span class="stack-tag">Inventory</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/HamzaAhmad-098/CloudKartPOS" class="project-link" target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-num">04</div>
+      <div class="project-title">EventSphere</div>
+      <div class="project-desc">Complete Event Management System in C# (.NET 8, WinForms) with MySQL. Features finance tracking, role-based access control, committee assignments, and automated PDF reporting. Designed for university-scale event operations.</div>
+      <div class="project-stack">
+        <span class="stack-tag">C#</span><span class="stack-tag">.NET 8</span>
+        <span class="stack-tag">WinForms</span><span class="stack-tag">MySQL</span>
+        <span class="stack-tag">PDF Reports</span><span class="stack-tag">RBAC</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/HamzaAhmad-098/EventSphere" class="project-link" target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-num">05</div>
+      <div class="project-title">Teacher Helper App</div>
+      <div class="project-desc">AI-powered grading system in Ruby on Rails auto-evaluates student tests using LLM API. Self-hosted on a home-built Ubuntu server with Cloudflare tunnel and custom domain. Live and accessible 24/7.</div>
+      <div class="project-stack">
+        <span class="stack-tag">Ruby on Rails</span><span class="stack-tag">AI API</span>
+        <span class="stack-tag">Ubuntu</span><span class="stack-tag">Cloudflare</span><span class="stack-tag">PostgreSQL</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/HamzaAhmad-098/RubyOnRails" class="project-link" target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+        <a href="https://teacherhelperapp.hamzaxdevelopers.dpdns.org" class="project-link" target="_blank">↗ Live</a>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-num">06</div>
+      <div class="project-title">DevBoard</div>
+      <div class="project-desc">Jira-inspired ticket tracking system in Ruby on Rails 7 & PostgreSQL. Full authentication, role-based authorization, ticket workflows, comment threads, and complete ticket history tracking.</div>
+      <div class="project-stack">
+        <span class="stack-tag">Ruby on Rails 7</span><span class="stack-tag">PostgreSQL</span>
+        <span class="stack-tag">RBAC</span><span class="stack-tag">Devise</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/HamzaAhmad-098/DevBoard" class="project-link" target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-num">07</div>
+      <div class="project-title">Ludo Online</div>
+      <div class="project-desc">Real-time multiplayer Ludo game with Socket.io rooms, color-restricted player routing, and live game state synchronization across multiple devices. Built with React/Vite frontend.</div>
+      <div class="project-stack">
+        <span class="stack-tag">React</span><span class="stack-tag">Vite</span>
+        <span class="stack-tag">Node.js</span><span class="stack-tag">Socket.io</span><span class="stack-tag">Tailwind</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/HamzaAhmad-098" class="project-link" target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-num">08</div>
+      <div class="project-title">Voice Controlled Robot</div>
+      <div class="project-desc">Arduino-based robot responding to Bluetooth voice commands via HC-06 module. Research published on low-cost educational robotics. Demonstrates real-world IoT and embedded systems integration.</div>
+      <div class="project-stack">
+        <span class="stack-tag">Arduino</span><span class="stack-tag">C++</span>
+        <span class="stack-tag">Bluetooth HC-06</span><span class="stack-tag">IoT</span>
+      </div>
+      <div class="project-links">
+        <span style="font-family:var(--font-mono);font-size:11px;color:var(--green);">📄 Research Published</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-num">09</div>
+      <div class="project-title">Orange Train Booking App</div>
+      <div class="project-desc">Full ticket booking system for Lahore's Orange Train in C# with Windows Forms UI, seat selection, booking confirmation flow, and printable ticket generation.</div>
+      <div class="project-stack">
+        <span class="stack-tag">C#</span><span class="stack-tag">Windows Forms</span><span class="stack-tag">.NET</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/HamzaAhmad-098/PF-Semester-1" class="project-link" target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-num">10</div>
+      <div class="project-title">SneezeGame</div>
+      <div class="project-desc">Cross-platform game built in both Python and Processing IDE. Obstacle-dodge mechanics with smooth gameplay, progressive difficulty, and high-score tracking.</div>
+      <div class="project-stack">
+        <span class="stack-tag">Python</span><span class="stack-tag">Processing IDE</span><span class="stack-tag">Game Dev</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/HamzaAhmad-098/SneezeGame" class="project-link" target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-num">11</div>
+      <div class="project-title">Path Finder's Duel</div>
+      <div class="project-desc">ASCII-based 2-player pathfinding game in C++. Players compete in real-time to find optimal paths using arrow-key controls. Console-based with smooth rendering.</div>
+      <div class="project-stack">
+        <span class="stack-tag">C++</span><span class="stack-tag">Console</span><span class="stack-tag">Game Dev</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/HamzaAhmad-098/PF-Semester-1" class="project-link" target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-num">12</div>
+      <div class="project-title">Math Solver Kit + Number Encryptor</div>
+      <div class="project-desc">Two C# Windows Forms tools a comprehensive math problem solver covering equations and calculus, and a number system converter with custom-key encryption/decryption using bitwise operations.</div>
+      <div class="project-stack">
+        <span class="stack-tag">C#</span><span class="stack-tag">Windows Forms</span>
+        <span class="stack-tag">.NET</span><span class="stack-tag">Cryptography</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/HamzaAhmad-098/PF-Semester-1" class="project-link" target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="section-label">Research</div>
+  <h2 class="section-title">Published<br>work.</h2>
+  <div class="research-list">
+    <div class="research-item reveal">
+      <div class="research-num">01</div>
+      <div>
+        <div class="research-title">Voice-Activated Robot Control System</div>
+        <div class="research-desc">Developed and published research on low-cost, voice-controlled robots for educational purposes. Built with Arduino and HC-06 Bluetooth module demonstrates accessible entry into robotics and AI for students with minimal hardware budgets.</div>
+      </div>
+      <div><span class="research-status published">Published</span></div>
+    </div>
+    <div class="research-item reveal">
+      <div class="research-num">02</div>
+      <div>
+        <div class="research-title">Boolean Algebra and Machine Language</div>
+        <div class="research-desc">A research paper rooted in 1.5 years of deep study into binary arithmetic, Boolean logic circuits, and machine-level programming. Explores how computation works at its lowest hardware layer and its relationship to assembly-level design.</div>
+      </div>
+      <div><span class="research-status published">Published</span></div>
+    </div>
+    <div class="research-item reveal">
+      <div class="research-num">03</div>
+      <div>
+        <div class="research-title">How AI Actually Works Domain Survey</div>
+        <div class="research-desc">Ongoing exploration into the domains, mechanisms, and real-world applications of artificial intelligence what it is, what it isn't, and how to apply it effectively as an engineer. Focus on demystifying AI for technical and non-technical audiences.</div>
+      </div>
+      <div><span class="research-status current">In Progress</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Contact</div>
+  <h2 class="section-title">Let's work<br>together.</h2>
+  <div class="contact-grid">
+    <div>
+      <p style="color:var(--muted);font-size:15px;line-height:1.9;margin-bottom:28px;">I'm currently open to internships, freelance projects, and full-time opportunities worldwide. If you're building something interesting, let's talk.</p>
+      <div class="contact-links">
+        <a href="mailto:hamzaxdevelopers1223@gmail.com" class="contact-link-item">
+          <div class="contact-icon-wrap" style="background:rgba(59,130,246,0.1)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          </div>
+          <div>
+            <div class="contact-link-text">Email</div>
+            <div class="contact-link-sub">hamzaxdevelopers1223@gmail.com</div>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/in/hamzaxdevelopers" target="_blank" class="contact-link-item">
+          <div class="contact-icon-wrap" style="background:rgba(6,182,212,0.1)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#06b6d4"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </div>
+          <div>
+            <div class="contact-link-text">LinkedIn</div>
+            <div class="contact-link-sub">hamzaxdevelopers</div>
+          </div>
+        </a>
+        <a href="https://github.com/HamzaAhmad-098" target="_blank" class="contact-link-item">
+          <div class="contact-icon-wrap" style="background:rgba(129,140,248,0.1)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#818cf8"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          </div>
+          <div>
+            <div class="contact-link-text">GitHub</div>
+            <div class="contact-link-sub">HamzaAhmad-098</div>
+          </div>
+        </a>
+        <a href="https://www.upwork.com/freelancers/~01912afd9a65919d7c" target="_blank" class="contact-link-item">
+          <div class="contact-icon-wrap" style="background:rgba(34,211,160,0.1)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#22d3a0"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H8.556v7.112c-.002 1.406-1.141 2.546-2.547 2.546-1.405 0-2.543-1.14-2.543-2.546V3.492H1.43v7.112c0 2.285 1.861 4.145 4.148 4.145 2.283 0 4.144-1.86 4.144-4.145v-1.194c.529 1.107 1.18 2.234 1.957 3.255l-1.gerçek657 7.706h2.05l1.19-5.529c1.07.867 2.246 1.44 3.557 1.44 2.956 0 5.355-2.399 5.355-5.351 0-2.955-2.399-5.352-5.355-5.352z"/></svg>
+          </div>
+          <div>
+            <div class="contact-link-text">Upwork</div>
+            <div class="contact-link-sub">Available for freelance</div>
+          </div>
+        </a>
+        <a href="https://wa.me/923297474472" target="_blank" class="contact-link-item">
+          <div class="contact-icon-wrap" style="background:rgba(34,211,160,0.1)">
+            <svg width="18" height="18" viewBox="0 0 32 32" fill="#22d3a0"><path d="M16 2C8.27 2 2 8.27 2 16c0 2.41.65 4.67 1.77 6.63L2 30l7.6-1.74A13.93 13.93 0 0 0 16 30c7.73 0 14-6.27 14-14S23.73 2 16 2zm7.28 19.56c-.3.84-1.77 1.62-2.44 1.72-.63.09-1.42.13-2.29-.14-.53-.16-1.2-.38-2.07-.76-3.64-1.57-6.02-5.26-6.2-5.5-.18-.25-1.48-1.97-1.48-3.76 0-1.79 1.13-2.68 1.53-3.04.4-.36.88-.45 1.17-.45.29 0 .59 0 .84.02.27.01.63-.1.99.76.36.87 1.23 3 1.34 3.23.11.22.18.49.03.79-.15.3-.22.48-.44.74-.22.27-.45.59-.64.79-.21.22-.44.47-.19.91.25.45 1.11 1.83 2.38 2.97 1.63 1.45 3.01 1.9 3.47 2.11.46.22.73.18 1-.11.27-.29 1.15-1.34 1.46-1.8.31-.46.62-.38 1.04-.23.42.15 2.66 1.25 3.12 1.48.46.23.77.34.88.54.11.19.11 1.11-.19 1.95z"/></svg>
+          </div>
+          <div>
+            <div class="contact-link-text">WhatsApp</div>
+            <div class="contact-link-sub">+92 329 747 4472</div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="feedback-form reveal">
+      <div class="form-title">Send a Message</div>
+      <form id="contact-form">
+        <div class="form-row">
+          <input type="text" name="name" placeholder="Your Name" required class="form-input" />
+          <input type="email" name="email" placeholder="Your Email" required class="form-input" />
+        </div>
+        <textarea name="message" rows="5" placeholder="Your message or opportunity..." required class="form-input"></textarea>
+        <button type="button" class="form-submit" onclick="handleFormSubmit()">Send Message →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-left"><span>hamza</span>@dev:~$ · Built with precision · 2025</div>
+  <div class="footer-right">© Hamza Ahmad All Rights Reserved</div>
+</footer>
+
 <script>
-  AOS.init({ once: true, duration: 800 });
+  function toggleMenu() { document.getElementById('mobile-nav').classList.toggle('open'); }
 
-  // mobile menu
-  const mobileBtn = document.getElementById('mobile-menu');
-  const navLinks = document.getElementById('nav-links');
-  if(mobileBtn) {
-    mobileBtn.addEventListener('click', () => navLinks.classList.toggle('show'));
-  }
-
-  // resume download (placeholder PDF — generates fake pdf or you can replace with actual link)
-  const resumeBtn = document.getElementById('download-resume');
-  if(resumeBtn) {
-    resumeBtn.addEventListener('click', () => {
-      // In production, replace with actual resume.pdf URL
-      const link = document.createElement('a');
-      link.href = 'https://drive.google.com/uc?export=download&id=1pJx2hXzYgZ3mRlB7Q9VtX5cW8aFdN0J'; // dummy, but will simulate
-      // For a real portfolio: host your resume.pdf and set href
-      alert('Resume download will be available soon. For now, contact me directly.');
-      // Uncomment below if you have actual resume.pdf:
-      // link.download = 'Hamza_Ahmad_Resume.pdf';
-      // document.body.appendChild(link);
-      // link.click();
-      // document.body.removeChild(link);
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 60); observer.unobserve(e.target); }
     });
-  }
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => observer.observe(el));
 
-  // modal logic
-  const modal = document.getElementById('project-modal');
-  const modalBody = document.getElementById('modal-body');
-  const closeModal = document.querySelector('.close-modal');
-
-  function openModal(content) {
-    modalBody.innerHTML = content;
-    modal.style.display = 'flex';
-  }
-  closeModal.onclick = () => modal.style.display = 'none';
-  window.onclick = (e) => { if(e.target === modal) modal.style.display = 'none'; };
-
-  const details = {
-    secureentry: `<h3>🔐 SecureEntry — Real‑time QR Attendance</h3>
-      <ul style="margin-top:1rem;list-style:square;padding-left:1.2rem;">
-        <li><strong>HMAC‑SHA256</strong> + per‑student Firestore token prevents forgery</li>
-        <li>Atomic transactions block duplicate entries across 4+ scanners</li>
-        <li>3‑pass adaptive QR pipeline for Android camera overexposure</li>
-        <li>Idempotent email delivery via Brevo SMTP with resume log</li>
-        <li>Firestore <code>onSnapshot</code> real‑time sync + connectivity guard</li>
-        <li>Deployed live at CS Riwayat 2026, 600+ students, zero corruption</li>
-      </ul>
-      <div style="margin-top:1rem"><a href="https://github.com/HamzaAhmad-098/SecureEntry" target="_blank" class="accent-link">GitHub Repo →</a></div>`,
-    beauty: `<h3>M.BeautyBloom</h3><p>MERN stack e‑commerce platform with Redux Toolkit, JWT, real‑time order tracking, Cloudinary integration, and responsive UI.</p>`,
-    teacher: `<h3>Teacher Helper App</h3><p>Ruby on Rails application that auto‑evaluates tests via API key. Hosted on homemade Ubuntu server with dynamic DNS and HTTPS.</p>`,
-    devboard: `<h3>DevBoard</h3><p>Ticket management system with full RBAC, comment threads, activity logs, and verification workflows. Built with Rails 7 and Hotwire.</p>`,
-    path: `<h3>Path Finder's Duel</h3><p>2‑player console game written in C++ using pathfinding heuristics, real‑time input handling, and ASCII graphics.</p>`,
-    voice: `<h3>Voice Controlled Robot</h3><p>Arduino UNO + HC‑06 Bluetooth module, voice commands via Android app, obstacle avoidance, and motor control.</p>`
-  };
-  document.querySelectorAll('.project-details-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const key = btn.getAttribute('data-project');
-      if(details[key]) openModal(details[key]);
-      else openModal('<p>Full project details available upon request. Check GitHub for more.</p>');
+  const barObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const fill = entry.target.querySelector('.skill-bar-fill');
+        if (fill) { const w = fill.getAttribute('data-width'); setTimeout(() => { fill.style.width = w + '%'; }, 200); }
+        barObserver.unobserve(entry.target);
+      }
     });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.skill-card').forEach(c => barObserver.observe(c));
+
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').style.background = window.scrollY > 60 ? 'rgba(5,8,16,0.97)' : 'rgba(5,8,16,0.85)';
   });
+
+  const heroDesc = document.querySelector('.hero-desc');
+  if (heroDesc) { heroDesc.style.opacity='0'; setTimeout(() => { heroDesc.style.transition='opacity 0.8s ease'; heroDesc.style.opacity='1'; }, 400); }
+
+  function animateCounter(el, target, suffix) {
+    let current = 0; const step = target / 40;
+    const interval = setInterval(() => {
+      current = Math.min(current + step, target);
+      el.textContent = (target % 1 !== 0 ? current.toFixed(2) : Math.floor(current)) + (suffix || '');
+      if (current >= target) clearInterval(interval);
+    }, 30);
+  }
+  const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.stat-num').forEach(num => {
+          const text = num.textContent;
+          const match = text.match(/([\d.]+)/);
+          if (match) { const val = parseFloat(match[1]); const suffix = text.replace(/[\d.]+/, ''); animateCounter(num, val, suffix); }
+        });
+        statsObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  const heroStats = document.querySelector('.hero-stats');
+  if (heroStats) statsObserver.observe(heroStats);
+
+  // Contact form — submit via Formspree AJAX, show success alert, stay on page
+  async function handleFormSubmit() {
+    const form = document.getElementById('contact-form');
+    const name = form.querySelector('[name="name"]').value.trim();
+    const email = form.querySelector('[name="email"]').value.trim();
+    const message = form.querySelector('[name="message"]').value.trim();
+
+    if (!name || !email || !message) {
+      alert('Please fill in all fields.');
+      return;
+    }
+
+    const btn = form.querySelector('.form-submit');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    try {
+      const res = await fetch('https://formspree.io/f/mvgregeg', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ name, email, message })
+      });
+
+      if (res.ok) {
+        form.reset();
+        btn.textContent = '✓ Message Sent!';
+        btn.style.background = 'linear-gradient(135deg,#22d3a0,#06b6d4)';
+        setTimeout(() => {
+          btn.textContent = 'Send Message →';
+          btn.style.background = '';
+          btn.disabled = false;
+        }, 3000);
+      } else {
+        throw new Error('Failed');
+      }
+    } catch {
+      alert('Something went wrong. Please email me directly at hamzaxdevelopers1223@gmail.com');
+      btn.textContent = 'Send Message →';
+      btn.disabled = false;
+    }
+  }
 </script>
 </body>
 </html>
