@@ -65,4 +65,4 @@ Hamza Ahmad
 
 ⚖️ License
 This repository is for educational and portfolio purposes only.
-Please do not copy code directly for academic submissions.
+Please do not copy code directly for academic submissions
