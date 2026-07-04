@@ -57,7 +57,7 @@ cd portfolio
 I'm open to internships, freelance projects, or tech collaboration.
 
 Hamza Ahmad
-🔗 GitHub: HamzaAhmad-098
+ GitHub: HamzaAhmad-098
 
 - 📧 Email: [HamzaxDevelopers](mailto:hamzaxdevelopers1223@gmail.com)
 
